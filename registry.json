@@ -1,0 +1,309 @@
+{
+  "schema": "rapp-sentinel-hub/1.0",
+  "generated": "2026-08-19T01:07:31+00:00",
+  "hub": "kody-w/rapp-sentinel-hub",
+  "count": 7,
+  "publishers": [
+    "kody-w"
+  ],
+  "categories": [
+    "consistency",
+    "example",
+    "output-freshness",
+    "reachability",
+    "run-status"
+  ],
+  "sentinels": [
+    {
+      "name": "@kody-w/github_status_sentinel",
+      "publisher": "kody-w",
+      "slug": "github_status_sentinel",
+      "version": "1.0.0",
+      "description": "Reads githubstatus.com and reports degraded components (Actions, Pages, API...) at warn so GitHub's outage is never mistaken for yours.",
+      "category": "reachability",
+      "checks": [
+        "github_status"
+      ],
+      "kinds": {
+        "github_status": {
+          "domain": "github",
+          "kind": "reachability"
+        }
+      },
+      "config": {
+        "components": [
+          "Actions",
+          "Pages",
+          "API Requests",
+          "Webhooks",
+          "Git Operations"
+        ],
+        "url": "https://www.githubstatus.com/api/v2/components.json",
+        "timeout_s": 25
+      },
+      "requires": [],
+      "tags": [
+        "github",
+        "outage",
+        "attribution",
+        "outsider"
+      ],
+      "author": "kody-w",
+      "license": "MIT",
+      "vantage": "outsider",
+      "path": "sentinels/@kody-w/github_status_sentinel.py",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-sentinel-hub/main/sentinels/@kody-w/github_status_sentinel.py",
+      "sha256": "1bee05417c8a1ab337554b2b5361546e19357e59b5808701afb89b13f5874d18",
+      "hash_algo": "sha256-lf-v1",
+      "lines": 105,
+      "install": "python3 sentinel_sdk.py install @kody-w/github_status_sentinel"
+    },
+    {
+      "name": "@kody-w/hello_world_sentinel",
+      "publisher": "kody-w",
+      "slug": "hello_world_sentinel",
+      "version": "1.0.0",
+      "description": "Always-green example that shows the single-file sentinel contract.",
+      "category": "example",
+      "checks": [
+        "hello_world"
+      ],
+      "kinds": {
+        "hello_world": {
+          "domain": "example",
+          "kind": "consistency"
+        }
+      },
+      "config": {
+        "greeting": "hello"
+      },
+      "requires": [],
+      "tags": [
+        "example",
+        "template"
+      ],
+      "author": "kody-w",
+      "license": "MIT",
+      "vantage": "outsider",
+      "path": "sentinels/@kody-w/hello_world_sentinel.py",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-sentinel-hub/main/sentinels/@kody-w/hello_world_sentinel.py",
+      "sha256": "07c5f85b94f07cd58daa9d18748aaf09f72d8f74c1f59d161a635cd1c103d391",
+      "hash_algo": "sha256-lf-v1",
+      "lines": 76,
+      "install": "python3 sentinel_sdk.py install @kody-w/hello_world_sentinel"
+    },
+    {
+      "name": "@kody-w/json_serves_sentinel",
+      "publisher": "kody-w",
+      "slug": "json_serves_sentinel",
+      "version": "1.0.0",
+      "description": "Named served JSON documents must fetch 200, parse, and carry the keys you require - catches conflict markers, truncation, and schema drift.",
+      "category": "consistency",
+      "checks": [
+        "json_serves"
+      ],
+      "kinds": {
+        "json_serves": {
+          "domain": "output",
+          "kind": "consistency"
+        }
+      },
+      "config": {
+        "documents": [
+          {
+            "url": "https://gist.githubusercontent.com/kody-w/f3e0fcb63b4c5a2351572b7c5266bce7/raw/sentinel-head.json",
+            "require": [
+              "schema",
+              "utc"
+            ]
+          }
+        ],
+        "timeout_s": 25
+      },
+      "requires": [],
+      "tags": [
+        "json",
+        "schema",
+        "consistency",
+        "outsider"
+      ],
+      "author": "kody-w",
+      "license": "MIT",
+      "vantage": "outsider",
+      "path": "sentinels/@kody-w/json_serves_sentinel.py",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-sentinel-hub/main/sentinels/@kody-w/json_serves_sentinel.py",
+      "sha256": "4426a1ef5ed8e133f4743c1a7adf614930c725b46b7b1620e9fe2b1c26a05778",
+      "hash_algo": "sha256-lf-v1",
+      "lines": 122,
+      "install": "python3 sentinel_sdk.py install @kody-w/json_serves_sentinel"
+    },
+    {
+      "name": "@kody-w/output_moving_sentinel",
+      "publisher": "kody-w",
+      "slug": "output_moving_sentinel",
+      "version": "1.0.0",
+      "description": "Fetches a served JSON document and fails when the timestamp inside the OUTPUT is older than max_age_h - freshness of work, not of heartbeats.",
+      "category": "output-freshness",
+      "checks": [
+        "output_moving"
+      ],
+      "kinds": {
+        "output_moving": {
+          "domain": "output",
+          "kind": "output-freshness"
+        }
+      },
+      "config": {
+        "url": "https://gist.githubusercontent.com/kody-w/f3e0fcb63b4c5a2351572b7c5266bce7/raw/sentinel-head.json",
+        "field": "utc",
+        "max_age_h": 2.0,
+        "what": "sentinel head",
+        "timeout_s": 25
+      },
+      "requires": [],
+      "tags": [
+        "freshness",
+        "R2",
+        "json",
+        "outsider"
+      ],
+      "author": "kody-w",
+      "license": "MIT",
+      "vantage": "outsider",
+      "path": "sentinels/@kody-w/output_moving_sentinel.py",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-sentinel-hub/main/sentinels/@kody-w/output_moving_sentinel.py",
+      "sha256": "0aa7a55bf601dd6e1b7d88630b7ef614ebf85da32ed09285df01a78265c63889",
+      "hash_algo": "sha256-lf-v1",
+      "lines": 145,
+      "install": "python3 sentinel_sdk.py install @kody-w/output_moving_sentinel"
+    },
+    {
+      "name": "@kody-w/peer_head_moving_sentinel",
+      "publisher": "kody-w",
+      "slug": "peer_head_moving_sentinel",
+      "version": "1.0.0",
+      "description": "Watches another rapp-sentinel's published head (rapp-sentinel-head/1.0): fails when it goes stale, when a watcher's seq stops advancing between looks, or when it moves backwards.",
+      "category": "output-freshness",
+      "checks": [
+        "peer_head_moving"
+      ],
+      "kinds": {
+        "peer_head_moving": {
+          "domain": "neighborhood",
+          "kind": "output-freshness"
+        }
+      },
+      "config": {
+        "peers": {
+          "kody-w/rappter-neighborhood-watch": "https://gist.githubusercontent.com/kody-w/f3e0fcb63b4c5a2351572b7c5266bce7/raw/sentinel-head.json"
+        },
+        "max_age_h": 2.0,
+        "min_gap_h": 1.0,
+        "state_file": "peer_heads_seen.json",
+        "timeout_s": 25
+      },
+      "requires": [],
+      "tags": [
+        "neighborhood",
+        "peers",
+        "rapp-sentinel-head",
+        "R2",
+        "outsider"
+      ],
+      "author": "kody-w",
+      "license": "MIT",
+      "vantage": "outsider",
+      "path": "sentinels/@kody-w/peer_head_moving_sentinel.py",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-sentinel-hub/main/sentinels/@kody-w/peer_head_moving_sentinel.py",
+      "sha256": "3532c46de366daaee9e60693f7ab39076c872443552fcfbac7ae335d6dad599f",
+      "hash_algo": "sha256-lf-v1",
+      "lines": 210,
+      "install": "python3 sentinel_sdk.py install @kody-w/peer_head_moving_sentinel"
+    },
+    {
+      "name": "@kody-w/sites_up_sentinel",
+      "publisher": "kody-w",
+      "slug": "sites_up_sentinel",
+      "version": "1.0.0",
+      "description": "A named list of URLs must all answer HTTP 200 to an unauthenticated fetch; partial outages are named, not averaged away.",
+      "category": "reachability",
+      "checks": [
+        "sites_up"
+      ],
+      "kinds": {
+        "sites_up": {
+          "domain": "sites",
+          "kind": "reachability"
+        }
+      },
+      "config": {
+        "urls": [
+          "https://kody-w.github.io/rapp-sentinel/"
+        ],
+        "critical": true,
+        "timeout_s": 25
+      },
+      "requires": [],
+      "tags": [
+        "http",
+        "pages",
+        "reachability",
+        "outsider"
+      ],
+      "author": "kody-w",
+      "license": "MIT",
+      "vantage": "outsider",
+      "path": "sentinels/@kody-w/sites_up_sentinel.py",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-sentinel-hub/main/sentinels/@kody-w/sites_up_sentinel.py",
+      "sha256": "e369ed52427e748d3ffdef4f86bb10597e0b96e47753c646962482963ad6714f",
+      "hash_algo": "sha256-lf-v1",
+      "lines": 111,
+      "install": "python3 sentinel_sdk.py install @kody-w/sites_up_sentinel"
+    },
+    {
+      "name": "@kody-w/workflows_starved_sentinel",
+      "publisher": "kody-w",
+      "slug": "workflows_starved_sentinel",
+      "version": "1.0.0",
+      "description": "For each repo, lists active workflows and fails when one has >= min_runs recent verdicts and not a single explicit success - colour-blind about failure (R3).",
+      "category": "run-status",
+      "checks": [
+        "workflows_starved"
+      ],
+      "kinds": {
+        "workflows_starved": {
+          "domain": "github",
+          "kind": "run-status"
+        }
+      },
+      "config": {
+        "repos": [
+          "kody-w/rapp-sentinel"
+        ],
+        "per_workflow_runs": 5,
+        "min_runs": 3,
+        "ignore": [],
+        "timeout_s": 25
+      },
+      "requires": [
+        "gh"
+      ],
+      "tags": [
+        "github",
+        "actions",
+        "workflows",
+        "R3",
+        "credentialed"
+      ],
+      "author": "kody-w",
+      "license": "MIT",
+      "vantage": "credentialed",
+      "path": "sentinels/@kody-w/workflows_starved_sentinel.py",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-sentinel-hub/main/sentinels/@kody-w/workflows_starved_sentinel.py",
+      "sha256": "61a93683b2c55eb4eafa9e34191c7a0ac75ecdfa7cd60924b9ec1044da45a20d",
+      "hash_algo": "sha256-lf-v1",
+      "lines": 147,
+      "install": "python3 sentinel_sdk.py install @kody-w/workflows_starved_sentinel"
+    }
+  ]
+}
