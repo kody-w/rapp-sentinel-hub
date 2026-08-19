@@ -48,7 +48,8 @@ a *warn* ("blind is not broken") · `prove() -> True` — break/control pairs, n
 Full text: [SPEC-rapp-sentinel-1.md](SPEC-rapp-sentinel-1.md).
 
 Three rules every sentinel is held to: **R1** receipts aren't evidence · **R2** ran isn't worked ·
-**R3** require known-good, never enumerate known-bad.
+**R3** require known-good, never enumerate known-bad. The frames a sentinel emits and verifies are
+[RAPP rev-5](https://kody-w.github.io/rapp-1/guide/) frames — read the visual guide for the protocol.
 
 ## What's here today
 
