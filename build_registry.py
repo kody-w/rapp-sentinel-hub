@@ -47,6 +47,19 @@ def build():
         "categories": sorted({e["category"] for e in entries}),
         "sentinels": entries,
     }
+    # keep `generated` stable when nothing else changed, so CI/bots do not churn
+    try:
+        prev = json.loads(OUT.read_text(encoding="utf-8"))
+        if {k: v for k, v in prev.items() if k != "generated"} == {k: v for k, v in doc.items() if k != "generated"}:
+            doc["generated"] = prev["generated"]
+    except Exception:
+        pass
+    if "--check" in sys.argv:
+        current = OUT.read_text(encoding="utf-8") if OUT.exists() else ""
+        if current != json.dumps(doc, indent=2) + "\n":
+            print("registry.json is stale - run python3 build_registry.py and commit")
+            sys.exit(1)
+        return doc, failures
     OUT.write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
     return doc, failures
 

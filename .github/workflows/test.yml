@@ -14,4 +14,4 @@ jobs:
         with: { python-version: "${{ matrix.python }}" }
       - run: python3 -m unittest discover -s tests -v
       - name: registry.json is current
-        run: python3 build_registry.py && git diff --exit-code -- registry.json || (echo "run python3 build_registry.py and commit"; exit 1)
+        run: python3 build_registry.py --check
