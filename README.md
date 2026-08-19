@@ -21,8 +21,9 @@ python3 sentinel_sdk.py install @kody-w/output_moving_sentinel  # -> <your senti
 `install` verifies the fetched bytes against the registry hash, re-runs the file's own
 `prove()`, and writes it to your sentinel's `hub/` directory (`--home DIR`, `$SENTINEL_HOME`,
 `~/rapp-sentinel`, or `~/.rapp/sentinel/instance`). The next `health.py` tick loads it —
-its check ids join the required set, so it can never silently stop running. Override defaults in
-`config.json`:
+its check ids join the required set, so it can never silently stop running. That is a **molt**: the
+running organism keeps its state and chains and grows a new check — never a transplant. Override
+defaults in `config.json`:
 
 ```json
 "hub": {"config": {"output_moving_sentinel": {"url": "https://you.github.io/x/state.json", "field": "built", "max_age_h": 6}},
