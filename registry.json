@@ -1,6 +1,6 @@
 {
   "schema": "rapp-sentinel-hub/1.0",
-  "generated": "2026-08-19T01:09:48+00:00",
+  "generated": "2026-08-19T01:17:30+00:00",
   "hub": "kody-w/rapp-sentinel-hub",
   "count": 7,
   "publishers": [
@@ -62,7 +62,7 @@
       "name": "@kody-w/hello_world_sentinel",
       "publisher": "kody-w",
       "slug": "hello_world_sentinel",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "Always-green example that shows the single-file sentinel contract.",
       "category": "example",
       "checks": [
@@ -87,7 +87,7 @@
       "vantage": "outsider",
       "path": "sentinels/@kody-w/hello_world_sentinel.py",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-sentinel-hub/main/sentinels/@kody-w/hello_world_sentinel.py",
-      "sha256": "07c5f85b94f07cd58daa9d18748aaf09f72d8f74c1f59d161a635cd1c103d391",
+      "sha256": "c6318674b6cf251d7f9ba9befe05b64dfbf45a78fbcb772a1e6bae5df40b830c",
       "hash_algo": "sha256-lf-v1",
       "lines": 76,
       "install": "python3 sentinel_sdk.py install @kody-w/hello_world_sentinel"

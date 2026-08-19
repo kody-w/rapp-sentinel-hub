@@ -16,7 +16,7 @@ The three rules every sentinel on the hub is held to (TRIFECTA §6d):
 __manifest__ = {
     "schema": "rapp-sentinel/1.0",
     "name": "@kody-w/hello_world_sentinel",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Always-green example that shows the single-file sentinel contract.",
     "category": "example",
     "checks": {
