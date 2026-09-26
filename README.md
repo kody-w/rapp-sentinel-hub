@@ -1,5 +1,9 @@
 # RAPP Sentinel Hub
 
+<!-- rapp1:network-header:start -->
+[![RAPP/1](https://kody-w.github.io/rapp-hive-public/portfolio/badges/rapp-sentinel-hub.svg)](https://github.com/kody-w/rapp-hive-public/blob/main/portfolio/repos/rapp-sentinel-hub.md) · **New to RAPP?** [Start here: get your Brainstem →](https://github.com/kody-w/rapp-installer#start-here)
+<!-- rapp1:network-header:end -->
+
 **Post useful rapp sentinels the way RAR posts `agent.py`s.** One file each. Browse, install,
 grow your own watchdog.
 
